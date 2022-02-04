@@ -13,7 +13,7 @@ import time
 from bs4 import BeautifulSoup
 
 def issues_crawl():
-	'''
+	"""
 	# TODO: crawl the issues first,
 	entry example:
 	{"id": 8934715,
@@ -32,7 +32,7 @@ def issues_crawl():
 		"image_full": null,
 		"image_square_100x100": null,
 		"representative_image_url": "https://seeclickfix.com/assets/categories_trans/no-image-af3faf07f478451d4ca455f92af96dd763f686e943607309ed059ef4fe13be21.png"}
-	'''
+	"""
 	# 1) One can find the url below via web inspector & by path
 	# 2) Each page shows 20 issues, there is a request limit!!! Do 20 pages each time! one can add a timer to control
 	for page_num in range(21, 301):
@@ -56,7 +56,10 @@ def match_class(target):
 
 
 def entry_comments_helper(url):
-	# TODO: crawl comments
+	"""
+	crawl comments
+	"""
+	
 	# url = "https://seeclickfix.com/issues/8936511"
 	html = urllib.request.urlopen(url).read()
 	text = BeautifulSoup(html, "html.parser")
@@ -77,7 +80,10 @@ def entry_comments_helper(url):
 
 
 def entry_comments():
-	# TODO: crawl the comments of each entry
+	"""
+	crawl the comments of each entry
+	"""
+	
 	import collections
 	# page_num = 1 # use issue_entry1.json as example
 	for page_num in range(21, 301):
@@ -98,9 +104,12 @@ def entry_comments():
 
 
 def entry_peek():
-	# TODO: data peek, better understand each entry
+	"""
+	data peek, better understand each entry
 	# one can do any post-processing based on this
 	# notice that one has to filter by NJ since there are data across US.
+	"""
+	
 	data = json.load(open("issue_entry1.json"))
 	for entry in data['issues']:
 		for k, v in entry.items():
